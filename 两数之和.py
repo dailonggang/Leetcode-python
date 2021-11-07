@@ -5,6 +5,7 @@ def twosun(nums, target):
          for j in range(i+1, n):
               if nums[i]+nums[j]==target:
                   return [i, j]
+                
     # return []
 
 print(twosun([1, 2, 3, 5, 9], 4))
