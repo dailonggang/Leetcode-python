@@ -1,0 +1,9 @@
+def twoSum(nums, target):  # 此时nums=[2, 7, 11, 15], target=9
+    hashtable = dict()   # 创建空字典
+    for i, num in enumerate(nums):  # i=0进行遍历，此时num=2，进行第二次，i=1,此时num=7
+        if target - num in hashtable:  # 第一次不进行此程序，第二次当i=1时，target-num = 2在哈希表中
+            return [hashtable[target - num], i]  # i=1时返回[0,1]
+        hashtable[nums[i]] = i  # 字典分为键和值，i=0时，将2：0插入哈希表中
+    return []
+
+print(twoSum([2, 7, 11, 15], 9))
