@@ -1,0 +1,9 @@
+def selection_sort(list):
+  length = len(list)
+  for i in range(length - 1, 0, -1):
+    for j in range(i):
+      if list[j] > list[i]:
+        list[j], list[i] = list[i], list[j]
+  return list
+a = selection_sort([1, 5, 8, 4, 6, 2])
+print(a)
