@@ -1,0 +1,45 @@
+class ListNode:
+    def __init__(self, val=1, next=None):
+        self.val = val
+        self.next = next
+
+# 反转链表
+def reverseList(head):
+    prev = None
+    curr = head
+    while curr:
+        nxt = curr.next
+        curr.next = prev
+        prev = curr
+        curr = nxt
+    return prev
+
+# 读取结点
+def get_nodes(arr):
+    head0 = ListNode()
+    head_budong = head0
+    for i in range(len(arr)):
+        new_node = ListNode(arr[i])
+        head0.next = new_node
+        head0 = head0.next
+    return head_budong.next  # 得到新链表的头节点
+
+# 保存新链表为list
+def save_new_nodes(new_head):
+    arr_new = []
+    while new_head:
+        arr_new.append(new_head.val)
+        new_head = new_head.next
+# 打印
+    print(arr_new)
+
+
+if __name__ == "__main__":
+    # 主函数输入列表
+    arr = [1, 2, 3, 4, 5]
+    # 得到头节点
+    headNode = get_nodes(arr)
+    # 反转
+    head_new = reverseList(headNode)
+    #进行保存
+    save_new_nodes(head_new)
