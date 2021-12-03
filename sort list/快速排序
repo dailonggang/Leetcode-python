@@ -1,32 +1,30 @@
-def QuickSort(input_list, left, right):
+def partition(arr, low, high):
+    base = arr[low]
+    i = low
+    j = high
 
-    def division(input_list, left, right):
-        """
-        函数说明:根据left和right进行一次扫描，重新找到基准数
-        :param input_list: 待排序列表
-        :param left: 左指针位置
-        :param right: 右指针位置
-        :return: 新的基准数位置
-        """
-        base = input_list[left]
-        while left < right:
-            while left < right and input_list[right] >= base:
-                right -= 1
-            input_list[left] = input_list[right]
-            while left < right and input_list[left] <= base:
-                left += 1
-            input_list[right] = input_list[left]
-        input_list[left] = base
-        return left
+    while i < j:
+        while i < j and arr[j] >= base:
+            j -= 1
+        while i < j and arr[i] <= base:
+            i += 1
+        arr[i], arr[j] = arr[j], arr[i]
+    arr[i], arr[low] = arr[low], arr[i]
+    return i
 
-    if left < right:
-        base_index = division(input_list, left, right)
-        QuickSort(input_list, left, base_index - 1)
-        QuickSort(input_list, base_index + 1, right)
+def quick_sort(arr, low, high):
+    if low < high:
+        index = partition(arr, low, high)
+        quick_sort(arr, low, index-1)
+        quick_sort(arr, index+1, high)
 
+def sort(arr):
+    print("before")
+    print(arr)
+    quick_sort(arr, 0, len(arr)-1)
+    print("after")
+    print(arr)
 
 if __name__ == '__main__':
-    input_list = [6, 4, 8, 9, 2, 3, 1]
-    print('排序前:', input_list)
-    QuickSort(input_list, 0, len(input_list) - 1)
-    print('排序后:', input_list)
+    input_arr = [4, 5, 8, 9, 6, 2, 7]
+    sort(input_arr)
