@@ -1,45 +1,81 @@
+# 定义ListNode
 class ListNode:
     def __init__(self, val=1, next=None):
         self.val = val
         self.next = next
 
+
 # 反转链表
 def reverseList(head):
+    """
+    反转链表
+    :param head: 定义头结点
+    :return: prev
+    """
+    # 定义空结点
     prev = None
+    # 将头结点赋值给curr
     curr = head
+    # 如果curr不为null,对链表进行反转
     while curr:
+        # 将curr.next交由nxt保存
         nxt = curr.next
+        # curr.next指向prev
         curr.next = prev
+        # 进行赋值，prev和curr前移一步
         prev = curr
         curr = nxt
     return prev
 
+
 # 读取结点
 def get_nodes(arr):
+    """
+    得到链表
+    :param arr: 输入列表
+    :return: 链表
+    """
+    # 设一个空结点
     head0 = ListNode()
-    head_budong = head0
+    # 设一个哨兵，方便后面读取
+    head_fixed = head0
+    # 循环读取链表
     for i in range(len(arr)):
+        # 依次读取结点
         new_node = ListNode(arr[i])
+        # head.next指向new_node
         head0.next = new_node
+        # head0前移
         head0 = head0.next
-    return head_budong.next  # 得到新链表的头节点
+    return head_fixed.next
+
+
 
 # 保存新链表为list
 def save_new_nodes(new_head):
+    """
+    将反转后的链表以列表进行保存
+    :param new_head: 反转后的链表
+    :return: 以列表形式进行保存输出
+    """
+    # 定义一个新链表
     arr_new = []
+    # 当反转链表不为空，依次将数据值存入列表中
     while new_head:
+        # 将当前数据值添加到列表中
         arr_new.append(new_head.val)
+        # 指向下一个
         new_head = new_head.next
-# 打印
+    # 打印列表
     print(arr_new)
 
 
 if __name__ == "__main__":
     # 主函数输入列表
     arr = [1, 2, 3, 4, 5]
-    # 得到头节点
+    # 得到链表
     headNode = get_nodes(arr)
-    # 反转
+    # 得到反转链表
     head_new = reverseList(headNode)
-    #进行保存
+    # 转为列表进行保存
     save_new_nodes(head_new)
