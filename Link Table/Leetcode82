@@ -10,7 +10,7 @@ def deleteDuplicates(head):
     pre = ListNode()
     pre.next = head
 
-    head = pre  # 重新定位head到哑结点来探测第一个
+    head = pre  # 重新定位head到假结点来探测第一个
 
     while head.next and head.next.next:
         if head.next.val == head.next.next.val:
