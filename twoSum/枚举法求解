@@ -1,12 +1,21 @@
-def twosun(nums, target):
-
+def twosum(nums, target):
+    """
+    枚举法
+    :param nums: 输入列表
+    :param target: 两数之和目标值
+    :return: 返回列表两数之和等于目标值的索引
+    """
+    # 求得列表长度
     n = len(nums)
+    # 两层for循环进行遍历
     for i in range(n):
-         for j in range(i+1, n):
-              if nums[i]+nums[j]==target:
-                  return [i, j]
-                
-    return []
+        for j in range(i+1, n):
+            # 当两数之和等于目标值时
+            if nums[i] + nums[j] == target:
+                # 返回两数的索引
+                return [i, j]
+# 赋予初始值
 
-print(twosun([1, 2, 3, 5, 9], 4))
+
+print(twosum([1, 2, 4, 5, 7], 3))
 
