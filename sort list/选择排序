@@ -1,9 +1,21 @@
-def selection_sort(list):
-  length = len(list)
-  for i in range(length - 1, 0, -1):
-    for j in range(i):
-      if list[j] > list[i]:
-        list[j], list[i] = list[i], list[j]
-  return list
-a = selection_sort([1, 5, 8, 4, 6, 2])
-print(a)
+def choose_sort(nums):
+    """
+    选择排序
+    :param nums: 输入列表
+    :return: 升序排序列表
+    """
+    # 输入列表长度
+    n = len(nums)
+    # 倒序进行n次遍历，i的顺序为4，3，2，1，0
+    for i in range(n-1, 0, -1):
+        # j从零开始遍历到i
+        for j in range(i):
+            # 如果前面的数比后面的数大
+            if nums[j] > nums[i]:
+                # 交换两个数的位置
+                nums[j], nums[i] = nums[i], nums[j]
+    # 返回升序后的列表
+    return nums
+
+# 输入列表
+print(choose_sort([1, 3, 7, 5, 4]))
