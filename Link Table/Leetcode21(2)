@@ -1,0 +1,56 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def merge(arr1, arr2):
+    empty = ListNode()
+    pre = empty
+    while arr1 and arr2:
+        if arr1.val <= arr2.val:
+            pre.next = arr1
+            arr1 = arr1.next
+        else:
+            pre.next = arr2
+            arr2 = arr2.next
+        pre = pre.next
+        if arr1:
+            pre.next = arr1
+        else:
+            pre.next = arr2
+    # pre.next = arr1 if arr1 is not None else arr2
+    return empty.next
+
+
+# 读取结点
+def get_nodes(arr):
+    head0 = ListNode()
+    head_fixed = head0
+    for i in range(len(arr)):
+        new_node = ListNode(arr[i])
+        head0.next = new_node
+        head0 = head0.next
+    return head_fixed.next  # 得到新链表的头节点
+
+# 保存新链表为list
+def save_new_nodes(new_head):
+    arr_new = []
+    while new_head:
+        arr_new.append(new_head.val)
+        new_head = new_head.next
+# 打印
+    print(arr_new)
+
+
+if __name__ == "__main__":
+    # 主函数输入列表
+    arr1 = [1, 2, 4]
+    arr2 = [1, 3, 4]
+    # 得到头节点
+    headNode1 = get_nodes(arr1)
+    headNode2 = get_nodes(arr2)
+    # 反转
+    head_new = merge(headNode1, headNode2)
+    # 进行保存
+    save_new_nodes(head_new)
