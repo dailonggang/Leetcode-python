@@ -40,6 +40,7 @@ def save_new_nodes(new_head):
     print(arr_new)
 
 
+
 if __name__ == "__main__":
     # 主函数输入列表
     arr = [0, 2, 3, 4, 5]
