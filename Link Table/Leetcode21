@@ -28,7 +28,7 @@ def get_nodes(arr):
         head0 = head0.next
     return head_fixed.next  # 得到新链表的头节点
 
-# 保存新链表为list
+# 保存为arr_new
 def save_new_nodes(new_head):
     arr_new = []
     while new_head:
