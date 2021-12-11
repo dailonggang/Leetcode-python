@@ -1,30 +1,25 @@
-def partition(arr, low, high):
-    base = arr[low]
-    i = low
-    j = high
+def quick_sort(nums):
+    def quick(left, right):
+        if left >= right:
+            return nums
+        pivot = left
+        i = left
+        j = right
+        while i < j:
+            while i < j and nums[j] >= nums[pivot]:
+                j -= 1
+            while i < j and nums[i] <= nums[pivot]:
+                i += 1
+            nums[i], nums[j] = nums[j], nums[i]
+        nums[pivot], nums[j] = nums[j], nums[pivot]
+        quick(left, j - 1)
+        quick(j + 1, right)
+        return nums
 
-    while i < j:
-        while i < j and arr[j] >= base:
-            j -= 1
-        while i < j and arr[i] <= base:
-            i += 1
-        arr[i], arr[j] = arr[j], arr[i]
-    arr[i], arr[low] = arr[low], arr[i]
-    return i
 
-def quick_sort(arr, low, high):
-    if low < high:
-        index = partition(arr, low, high)
-        quick_sort(arr, low, index-1)
-        quick_sort(arr, index+1, high)
-
-def sort(arr):
-    print("before")
-    print(arr)
-    quick_sort(arr, 0, len(arr)-1)
-    print("after")
-    print(arr)
+    quick(0, len(nums)-1)
+    print(nums)
 
 if __name__ == '__main__':
-    input_arr = [4, 5, 8, 9, 6, 2, 7]
-    sort(input_arr)
+    input_arr = [2, 3, 7, 5, 4, 1]
+    quick_sort(input_arr)
