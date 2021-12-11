@@ -1,0 +1,29 @@
+# 法一
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        d = dict()
+        while headA:
+            d[headA] = 1
+            headA = headA.next
+        while headB:
+            if headB in d:
+                return headB
+            headB = headB.next
+        return None
+        
+# 法二
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        A, B = headA, headB
+        while A != B:
+            if A:
+                A = A.next
+            else:
+                A = headB
+            if B:
+                B = B.next
+            else:
+                B = headA
+            # A = A.next if A else headB
+            # B = B.next if B else headA
+        return A
