@@ -1,0 +1,10 @@
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        hashtable = set()
+        while head:
+            if head in hashtable:
+                return True
+            else:
+                hashtable.add(head)
+                head = head.next
+        return False
