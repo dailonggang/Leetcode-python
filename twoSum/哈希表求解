@@ -5,6 +5,8 @@ def twosum(nums, target):
     :param target: 两数之和目标值
     :return: 返回满足要求的两数的索引
     """
+    
+    
     # 创建一个空字典
     hashtable = dict()
     # 分别对索引和值进行遍历
