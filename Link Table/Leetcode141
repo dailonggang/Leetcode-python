@@ -1,5 +1,20 @@
+# 法一
+# 判断是否有环
 class Solution:
-    def hasCycle(self, head: ListNode) -> bool:
+    def hasCycle(self, head):
+
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+
+        return False
+
+# 法二
+class Solution1:
+    def hasCycle(self, head):
         hashtable = set()
         while head:
             if head in hashtable:
