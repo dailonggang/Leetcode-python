@@ -1,12 +1,24 @@
 class ListNode:
+    """
+    定义类并进行初始化
+    """
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
 
 def merge(arr1, arr2):
+    """
+    合并两个有序链表
+    :param arr1: 输入链表1
+    :param arr2: 输入链表2
+    :return: 返回有序合并链表
+    """
+    # 定义哑结点
     empty = ListNode()
+    # 赋给pre
     pre = empty
+    # 两个链表都不为空，pre指向数据较小的链表，该链表指向下一指针，
     while arr1 and arr2:
         if arr1.val <= arr2.val:
             pre.next = arr1
@@ -15,10 +27,11 @@ def merge(arr1, arr2):
             pre.next = arr2
             arr2 = arr2.next
         pre = pre.next
-        if arr1:
-            pre.next = arr1
-        else:
-            pre.next = arr2
+    # 如果最后那个链表不为空则pre指向那个链表
+    if arr1:
+        pre.next = arr1
+    else:
+        pre.next = arr2
     # pre.next = arr1 if arr1 is not None else arr2
     return empty.next
 
@@ -33,7 +46,6 @@ def get_nodes(arr):
         head0 = head0.next
     return head_fixed.next  # 得到新链表的头节点
 
-
 # 保存新链表为list
 def save_new_nodes(new_head):
     arr_new = []
@@ -46,12 +58,12 @@ def save_new_nodes(new_head):
 
 if __name__ == "__main__":
     # 主函数输入列表
-    arr1 = [1, 2, 4]
-    arr2 = [1, 3, 4]
-    # 得到头节点
+    arr1 = []
+    arr2 = [1]
+    # 得到链表形式
     headNode1 = get_nodes(arr1)
     headNode2 = get_nodes(arr2)
-    # 反转
+    # 合并
     head_new = merge(headNode1, headNode2)
-    # 进行保存
+    # 进行保存打印
     save_new_nodes(head_new)
