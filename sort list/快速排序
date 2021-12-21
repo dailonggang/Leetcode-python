@@ -1,25 +1,40 @@
 def quick_sort(nums):
+    """
+    :param nums: 输入乱序列表
+    :return:打印有序列表
+    """
     def quick(left, right):
+        """
+        :param left: 左指针
+        :param right: 右指针
+        :return: 返回有序数组
+        """
+        # 空集或者只有一个数据，返回输入列表
         if left >= right:
             return nums
+
+        # 定义中心点
         pivot = left
+        # 对left和right重新赋值
         i = left
         j = right
+        
+        # 实现左面的数小于中心点值，右边的数大于中心点值
         while i < j:
             while i < j and nums[j] >= nums[pivot]:
                 j -= 1
             while i < j and nums[i] <= nums[pivot]:
                 i += 1
             nums[i], nums[j] = nums[j], nums[i]
-        nums[pivot], nums[j] = nums[j], nums[pivot]
-        quick(left, j - 1)
-        quick(j + 1, right)
+        nums[pivot], nums[i] = nums[i], nums[pivot]
+        quick(left, i - 1)
+        quick(i + 1, right)
         return nums
 
-
+    # 给left和right赋初值
     quick(0, len(nums)-1)
     print(nums)
 
 if __name__ == '__main__':
-    input_arr = [2, 3, 7, 5, 4, 1]
+    input_arr = [1, 5, 7, 6, 3, 4]
     quick_sort(input_arr)
