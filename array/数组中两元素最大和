@@ -1,0 +1,18 @@
+def sum_two(nums):
+    i = 0
+    j = 0
+    max_sum = 0
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            sum = nums[i] + nums[j]
+            if sum > max_sum:
+                max_sum = sum
+                m = i
+                n = j
+    print(m, n)
+    return max_sum
+
+
+if __name__ == '__main__':
+    arr = [1, 2, 5, 8, 6]
+    print(sum_two(arr))
