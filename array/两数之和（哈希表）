@@ -1,0 +1,9 @@
+def Two_sum(arr, target):
+    hashtable = dict()
+    for i, num in enumerate(arr):
+        if target-num in hashtable:
+            return [hashtable[target-num], i]
+        hashtable[arr[i]] = i
+
+
+print(Two_sum([1, 2, 4, 6], 3))
