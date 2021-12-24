@@ -1,0 +1,21 @@
+def quick_sort(arr):
+    def quick(left, right):
+        if left >= right:
+            return arr
+        pivot = left
+        i = left
+        j = right
+        while i < j:
+            while i < j and arr[j] >= arr[pivot]:
+                j -= 1
+            while i < j and arr[i] <= arr[pivot]:
+                i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+        arr[pivot], arr[i] = arr[i], arr[pivot]
+        quick(left, i-1)
+        quick(i+1, right)
+        return arr
+    quick(0, len(arr)-1)
+    print(arr)
+
+quick_sort([1, 2, 6, 8, 5, 4])
