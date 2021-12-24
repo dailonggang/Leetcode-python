@@ -1,0 +1,21 @@
+def choose_sort(arr):
+    """
+    选择排序
+    :param arr: 输入数组
+    :return: 升序排序数组
+    """
+    # 输入数组长度
+    n = len(arr)
+    # 倒序进行n次遍历，i的顺序为4，3，2，1，0
+    for i in range(n-1, 0, -1):
+        # j从零开始遍历到i
+        for j in range(i):
+            # 如果前面的数比后面的数大
+            if arr[j] > arr[i]:
+                # 交换两个数的位置
+                arr[j], arr[i] = arr[i], arr[j]
+    # 返回升序后的数组
+    return arr
+
+# 输入数组
+print(choose_sort([1, 3, 7, 5, 4]))
