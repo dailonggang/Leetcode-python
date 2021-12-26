@@ -1,0 +1,15 @@
+def mySqrt(x):
+    l = 0
+    r = x
+    while l < r:
+        mid = (l + r) // 2
+        if mid * mid >= x:
+            r = mid
+        else:
+            l = mid + 1
+    if l * l == x:
+        return l
+    else:
+        return l - 1
+
+print(mySqrt(10))
