@@ -1,3 +1,4 @@
+# 双指针
 def seach(nums, target):
     left, right = 0, len(nums)-1
 
@@ -10,6 +11,26 @@ def seach(nums, target):
         else:
             return middle
     return -1
+
+
+print(seach([1, 2, 3, 4, 5, 6], 2))
+
+
+# 暴力解法
+def delete(nums, val):
+    n = len(nums)
+    i = 0
+    while i < n:
+        if nums[i] == val:
+            for j in range(i+1, n):
+                nums[j-1] = nums[j]
+            i -= 1
+            n -= 1
+
+        i = i+1
+
+    print(nums)
+    return n
 
 
 print(seach([1, 2, 3, 4, 5, 6], 2))
