@@ -1,0 +1,42 @@
+# 法一：暴力，先平方再排序
+def sortedsquare(nums):
+    n = len(nums)
+    i = 0
+    while i < n:
+        nums[i] = nums[i] ** 2
+        i += 1
+
+    return nums
+def sort(num):
+    m = len(num)
+    for l in range(m):
+        for r in range(l+1, m):
+            if num[l] > num[r]:
+                num[l], num[r] = num[r], num[l]
+    return num
+
+
+
+nums = [-4, -1, 0, 3, 10]
+num = sortedsquare(nums)
+print(sort(num))
+
+
+# 法二：双指针
+def sortedSquares(nums):
+    n = len(nums)
+    i, j, k = 0, n - 1, n - 1
+    ans = [-1] * n
+    while i <= j:
+        lm = nums[i] ** 2
+        rm = nums[j] ** 2
+        if lm > rm:
+            ans[k] = lm
+            i += 1
+        else:
+            ans[k] = rm
+            j -= 1
+        k -= 1
+    return ans
+
+print(sortedSquares([-4, -1, 0, 3, 10]))
