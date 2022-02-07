@@ -1,4 +1,4 @@
-# 双指针
+# 双指针(有序重复)
 def seach(nums, target):
     left, right = 0, len(nums)-1
 
