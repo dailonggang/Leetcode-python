@@ -1,5 +1,5 @@
 def generateMatrix(n):
-    # 初始化要填充的正方形
+    # 初始化要填充的正方形，初始值为0
     matrix = [[0] * n for _ in range(n)]
 
     left, right, up, down = 0, n - 1, 0, n - 1
