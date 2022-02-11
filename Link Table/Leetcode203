@@ -1,11 +1,11 @@
-def removeElements(head, val):
-  while head and head.val == val:
-      head = head.next
-  if not head: return
-  pre = head
-  while pre.next:
-      if pre.next.val == val:
-          pre.next = pre.next.next
-      else:
-          pre = pre.next
-  return head
+def deleteElement(head, val):
+    # 创建一个空结点
+    pre = ListNode()  # 添加一个虚拟节点
+    pre.next = head
+    cur = pre
+    while cur.next:
+        if cur.next.val == val:
+            cur.next = cur.next.next  # 删除cur.next节点
+        else:
+            cur = cur.next
+    return pre.next
