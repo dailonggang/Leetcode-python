@@ -1,0 +1,21 @@
+class CQueue:
+    def __init__(self):
+        # 初始化两个空列表
+        self.A, self.B = [], []
+
+    def appendTail(self, value):
+        # 在队列尾部插入整数，value为往队列尾部插入整数的参数
+        self.A.append(value)
+
+    def deleteHead(self):
+        # 如果栈B包含元素，就将栈B末尾元素弹出
+        if self.B:
+            return self.B.pop()
+        # 如果栈B不包含元素，且栈A也不包含元素，则返回-1
+        elif not self.A:
+            return -1
+        # 如果栈B不包含元素，而栈A包含元素，将栈A元素逐个转移至栈B，并弹出
+        else:
+            while self.A:
+                self.B.append(self.A.pop())
+            return self.B.pop()
