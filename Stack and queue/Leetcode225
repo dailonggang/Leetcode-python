@@ -1,0 +1,20 @@
+class MyStack:
+
+    def __init__(self):
+        self.q = []
+
+    def push(self, x):
+        self.q.append(x)
+        q_length = len(self.q)
+        while q_length > 1:
+            self.q.append(self.q.pop(0))  # 反转前n-1个元素，栈顶元素元素始终保持在对首
+            q_length -= 1
+
+    def pop(self):
+        return self.q.pop(0)
+
+    def top(self):
+        return self.q[0]
+
+    def empty(self):
+        return self.q == []
