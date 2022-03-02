@@ -1,0 +1,11 @@
+def removeDuplicates(s):
+    stack = list()
+    for item in s:
+        if stack and stack[-1] == item:
+            stack.pop()
+        else:
+            stack.append(item)
+    return "".join(stack)
+
+
+print(removeDuplicates("abbaca"))
