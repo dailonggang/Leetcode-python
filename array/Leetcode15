@@ -1,0 +1,38 @@
+def threeSum(nums):
+    # 创建一个空列表用来存放结果
+    ans = []
+    n = len(nums)
+    # 首次对数组进行排序
+    nums.sort()
+    # 让i从下标0开始，双指针根据三者之和是否大于零进行相应移动
+    for i in range(n):
+        # 建立双指针
+        left = i + 1
+        right = n - 1
+        # 如果i对应数组值大于零，因为已经经过排序，那么三者之和肯定大于零，直接break跳出
+        if nums[i] > 0:
+            break
+        # 如果后续有相同值，则直接跳过
+        if i >= 1 and nums[i] == nums[i - 1]:
+            continue
+        # 进入判断
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            if total > 0:
+                right -= 1
+            elif total < 0:
+                left += 1
+            else:
+                # 将结果添加进数组
+                ans.append([nums[i], nums[left], nums[right]])
+                # left != right的作用：如果没有这条语句，如果数组全为零，那么将超过数组长度
+                while left != right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left != right and nums[right] == nums[right - 1]:
+                    right -= 1
+                left += 1
+                right -= 1
+    return ans
+
+
+print(threeSum([0, 0, 0]))
