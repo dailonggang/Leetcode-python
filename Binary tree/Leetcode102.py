@@ -1,26 +1,43 @@
 import collections
 
+
 class TreeNode:
     def __init__(self, value):
         self.val = value
         self.left = None
         self.right = None
+
+
 def levelOrder(root):
-    queue = collections.deque()
-    queue.append(root)
+    # 保存结果
     res = []
+    # 如果开始结点为空，直接返回空列表
+    if not root:
+        return res
+    # 创建双端队列，可以比较方便的从两头append数据
+    queue = collections.deque()
+    # 添加根结点
+    queue.append(root)
+
     while queue:
+        # 层数结点的个数
         size = len(queue)
+        # 用于保存该层数的结点
         level = []
         for _ in range(size):
+            # 从左侧弹出结点
             cur = queue.popleft()
-            if not cur:
-                continue
+            # 将结点值添加到level中
             level.append(cur.val)
-            queue.append(cur.left)
-            queue.append(cur.right)
-        if level:
-            res.append(level)
+            # 如果左侧子树不为None,那么就将其添加到queue中
+            if cur.left:
+                queue.append(cur.left)
+            # 如果右侧子树不为None,那么就将其添加到queue中
+            if cur.right:
+                queue.append(cur.right)
+        # 将每一层的结点值添加到res中
+        res.append(level)
+
     return res
 
 
@@ -49,5 +66,5 @@ if __name__ == "__main__":
     root = node1
 
     # 打印
-    print("\nprint in one line:" )
+    print("print in one line:" )
     print(levelOrder(root))
