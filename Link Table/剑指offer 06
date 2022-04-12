@@ -1,0 +1,33 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def reversePrint(head):
+    stack = []
+    while head:
+        stack.append(head.val)
+        head = head.next
+
+    print(stack[::-1])
+
+
+# 读取结点
+def get_nodes(arr):
+    head0 = ListNode()
+    head_fixed = head0
+    for i in range(len(arr)):
+        new_node = ListNode(arr[i])
+        head0.next = new_node
+        head0 = head0.next
+    return head_fixed.next  # 得到新链表的头节点
+
+
+
+if __name__ == "__main__":
+    # 主函数输入列表
+    arr = [1, 2, 3, 4, 5]
+    # 得到头节点
+    headNode = get_nodes(arr)
+    reversePrint(headNode)
