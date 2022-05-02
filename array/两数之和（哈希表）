@@ -1,4 +1,4 @@
-def Two_sum(arr, target):
+def Two_sum(nums, target):
     """
     哈希表求两数之和
     :param nums: 输入列表
@@ -8,7 +8,7 @@ def Two_sum(arr, target):
     # 创建一个空字典
     hashtable = dict()
     # 分别对索引和值进行遍历
-    for i, num in enumerate(arr):
+    for i, num in enumerate(nums):
         # 如果另一个值在哈希表中
         if target-num in hashtable:
             # 返回两数对应的索引
