@@ -1,36 +1,20 @@
 # 双指针(有序重复)
 def seach(nums, target):
     left, right = 0, len(nums)-1
-
+    
     while left <= right:
+        # 取序列中间值
         middle = (left + right) // 2
+        # 如果对应数值小于目标值，那么左指针在中间序列上加1
         if nums[middle] < target:
             left = middle + 1
+        # 如果对应数值大于目标值，那么右指针在中间序列上减1
         elif nums[middle] > target:
             right = middle - 1
+        # 直到中间序列值等于目标值
         else:
             return middle
     return -1
-
-
-print(seach([1, 2, 3, 4, 5, 6], 2))
-
-
-# 暴力解法
-def delete(nums, val):
-    n = len(nums)
-    i = 0
-    while i < n:
-        if nums[i] == val:
-            for j in range(i+1, n):
-                nums[j-1] = nums[j]
-            i -= 1
-            n -= 1
-
-        i = i+1
-
-    print(nums)
-    return n
 
 
 print(seach([1, 2, 3, 4, 5, 6], 2))
