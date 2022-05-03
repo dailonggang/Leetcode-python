@@ -1,14 +1,20 @@
 def minSubArrayLen(s, nums):
     # 定义一个无限大的数
     res = float("inf")
+    # 子序列的数值之和
     Sum = 0
+    # 起始位置
     index = 0
     for i in range(len(nums)):
+        # 求子序列的数值之和
         Sum += nums[i]
         while Sum >= s:
+            # 取序列的最小值
             res = min(res, i - index + 1)
+            # 减去起始数值，不断更新子序列的起始值
             Sum -= nums[index]
             index += 1
+    # 如果res还是等于原数值，说明没有符合条件的子序列
     if res == float("inf"):
         return 0
     else:
