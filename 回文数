@@ -1,14 +1,13 @@
-def isPalindrome(x):
+def IsPalindrome(x):
     if x < 0 or (x % 10 == 0 and x != 0):
         return False
-    if x == 0:
-        return True
-    revertedNumber = 0
-    while x > revertedNumber:
-        revertedNumber = revertedNumber * 10 + x % 10
+    rev = 0
+    while x >= rev:
+        rev = rev * 10 + x % 10
         x = x // 10
-        if x == revertedNumber or x == revertedNumber // 10:
+        if x == rev or x == rev // 10:
             return True
     return False
 
-print(isPalindrome(121))
+
+print(IsPalindrome(1))
