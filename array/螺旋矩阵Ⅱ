@@ -3,7 +3,7 @@ def generateMatrix(n):
     matrix = [[0] * n for _ in range(n)]
 
     left, right, up, down = 0, n - 1, 0, n - 1
-    number = 1  # 要填充的数字
+    number = 1  # 要填充数字的起始值
 
     while left < right and up < down:
 
