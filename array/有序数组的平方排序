@@ -26,10 +26,13 @@ print(sort(num))
 def sortedSquares(nums):
     n = len(nums)
     i, j, k = 0, n - 1, n - 1
+    # 倒序
     ans = [-1] * n
     while i <= j:
+        # 起始和终止位置的平方
         lm = nums[i] ** 2
         rm = nums[j] ** 2
+        # 将左右指针对应平方大的存入ans，然后对应进行移动
         if lm > rm:
             ans[k] = lm
             i += 1
