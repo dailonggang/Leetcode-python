@@ -1,5 +1,8 @@
 def quick_sort(arr):
     def quick(left, right):
+        """
+        寻找轴点元素，大于该点值的放到右边，小于的放左边，不断分割数组，遍历
+        """
         if left >= right:
             return arr
         pivot = left
