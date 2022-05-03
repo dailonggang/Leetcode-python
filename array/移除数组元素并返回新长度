@@ -3,10 +3,14 @@ def delete(nums, val):
     n = len(nums)
     i = 0
     while i < n:
+        # 如果序列对应值等于目标值
         if nums[i] == val:
             for j in range(i+1, n):
+                # 后面的元素向前移动
                 nums[j-1] = nums[j]
+            # 如果连续元素为目标值，那么需要回到原位置重新判定
             i -= 1
+            # 数组长度减一
             n -= 1
 
         i = i+1
@@ -18,12 +22,14 @@ def delete(nums, val):
 print(delete([3, 3, 2, 3, 4, 5, 8, 3], 3))
 
 
-# 法二
+# 法二：双指针
 def delete(nums, val):
     a = 0
     b = 0
     while a < len(nums):
+        # 如果a对应的序列值不为目标值
         if nums[a] != val:
+            # 那么将a的值存入b中
             nums[b] = nums[a]
             b += 1
         a += 1
