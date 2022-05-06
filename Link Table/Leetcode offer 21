@@ -4,14 +4,14 @@ class ListNode:
         self.next = next
 
 
-def delete_n(head, n):
-    left = right = head
+def RemoveNEnd(head, n):
+    dummy = ListNode()
+    dummy.next = head
+    left = right = dummy
     count = 0
     while count < n:
         right = right.next
         count += 1
-    if not right:
-        return head.next
     while right.next:
         left = left.next
         right = right.next
