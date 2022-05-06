@@ -1,6 +1,6 @@
 def deleteElement(head, val):
     # 创建一个空结点
-    pre = ListNode()  # 添加一个虚拟节点
+    pre = ListNode()  # 设置一个虚拟头节点
     pre.next = head
     cur = pre
     while cur.next:
