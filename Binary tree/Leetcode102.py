@@ -1,6 +1,7 @@
 import collections
 
 
+# 二叉树节点定义
 class TreeNode:
     def __init__(self, value):
         self.val = value
