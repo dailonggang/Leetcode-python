@@ -8,7 +8,8 @@ class TreeNode:
 def preorderTraversal(root):
     # 保存结果
     result = []
-
+    
+    # 递归
     def traversal(root):
         if root == None:
             return
