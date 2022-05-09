@@ -14,7 +14,7 @@ def preorderTraversal(root):
         if root == None:
             return
         traversal(root.left)  # 左
-        result.append(root.val)  # 前序
+        result.append(root.val)  # 中序
         traversal(root.right)  # 右
 
     traversal(root)
