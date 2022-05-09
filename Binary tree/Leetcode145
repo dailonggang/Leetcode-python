@@ -1,4 +1,5 @@
 def postorderTraversal(root):
+  # 存取结果
   result = []
 
   def traversal(root):
