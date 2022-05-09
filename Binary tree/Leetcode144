@@ -1,0 +1,19 @@
+def preorderTraversal(root):
+  # 如果根节点为空直接返回  
+  if not root:
+      return
+  # 将根节点加载到栈
+  stack = [root]
+  # 存取结果
+  result = []
+  while stack:
+    # 弹出栈顶元素
+    node = stack.pop()
+    # 将栈顶元素的值添加进result
+    result.append(node.val)
+    # 先加载右节点，再加载左节点，先进后出
+    if node.right:
+        stack.append(node.right)
+    if node.left:
+        stack.append(node.left)
+  return result
