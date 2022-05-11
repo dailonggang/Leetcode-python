@@ -1,0 +1,21 @@
+def isAnagram(s, t):
+    # 对0-25用数字0进行填充
+    record = [0] * 26
+    # 遍历字符串s
+    for i in range(len(s)):
+        # ord() 函数返回对应的 ASCII 数值，或者 Unicode 数值。
+        # 求得相对数值，并对其出现次数进行累计
+        record[ord(s[i]) - ord("a")] += 1
+    # 遍历字符串t
+    for i in range(len(t)):
+        # 对出现的字符进行减一操作
+        record[ord(t[i]) - ord("a")] -= 1
+    # 遍历26个位置
+    for i in range(26):
+        if record[i] != 0:
+            # record数组如果有的元素不为零0，说明字符串s和t 一定是谁多了字符或者谁少了字符。
+            return False
+    return True
+
+
+print(isAnagram(("aee"), ("eae")))
