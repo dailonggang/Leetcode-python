@@ -28,7 +28,6 @@ def compare(left, right):
     outside = compare(left.left, right.right)  # 左子树：左、 右子树：右
     inside = compare(left.right, right.left)  # 左子树：右、 右子树：左
     isSame = outside and inside  # 左子树：中、 右子树：中 （逻辑处理）
-    print(isSame)
     return isSame
 
 
