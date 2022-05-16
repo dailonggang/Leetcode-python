@@ -1,0 +1,13 @@
+def canConstruct(ransomNot, magazine):
+    arr = [0] * 26
+
+    for x in range(len(magazine)):
+        arr[ord(magazine[x]) - ord("a")] += 1
+
+    for x in range(len(ransomNote)):
+        if arr[ord(ransomNote[x]) - ord("a")] == 0:
+            return False
+        else:
+            arr[ord(ransomNote[x]) - ord("a")] -= 1
+
+    return True
