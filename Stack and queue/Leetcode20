@@ -1,5 +1,6 @@
 def isvalid(s):
     stack = []
+    # 将出现的括号的另一半压入栈
     for item in s:
         if item == '(':
             stack.append(')')
