@@ -1,4 +1,5 @@
 def removeDuplicates(s):
+    # 创建空列表
     stack = list()
     for item in s:
         if stack and stack[-1] == item:
