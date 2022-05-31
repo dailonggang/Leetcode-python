@@ -4,7 +4,7 @@ class CQueue:
         self.A, self.B = [], []
 
     def appendTail(self, value):
-        # 在队列尾部插入整数，value为往队列尾部插入整数的参数
+        # 列表A插入整数，也就是在队列头部插入整数
         self.A.append(value)
 
     def deleteHead(self):
