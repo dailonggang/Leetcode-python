@@ -1,0 +1,34 @@
+def repeatedSubstringPattern(s):
+    if len(s) == 0:
+        return False
+    next = [0] * len(s)
+    getNext(next, s)
+    # 通过对重复字符串的打印发现，当采用原来next时，第一个子字符串全为0，后面重复子字符串从1递加
+    # 如果不重复对应next为0，如果后面有重复，还是从1递加
+    if next[-1] != 0 and len(s) % (len(s) - next[-1]) == 0:
+        return True
+    return False
+
+
+# 保留得到的next数组，既不减一也不右移
+def getNext(next, s):
+    # 1.初始化
+    # j从0开始，i从1开始，next[0]=0
+    next[0] = 0
+    j = 0
+    for i in range(1, len(s)):
+        # 2.前后缀不相同，j回退
+        while j > 0 and s[i] != s[j]:
+            j = next[j - 1]
+        # 3.前后缀相同，j+=1
+        if s[i] == s[j]:
+            j += 1
+        # 4.更新next
+        next[i] = j
+    return next
+
+s="abbabbabb"
+next = [0] * len(s)
+print(getNext(next,s))
+l = repeatedSubstringPattern(s)
+print(l)
