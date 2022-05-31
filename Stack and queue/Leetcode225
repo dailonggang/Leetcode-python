@@ -1,20 +1,38 @@
 class MyStack:
 
     def __init__(self):
-        self.q = []
+        """
+        Initialize your data structure here.
+        """
+        self.queue = collections.deque()
 
-    def push(self, x):
-        self.q.append(x)
-        q_length = len(self.q)
-        while q_length > 1:
-            self.q.append(self.q.pop(0))  # 反转前n-1个元素，栈顶元素元素始终保持在对首
-            q_length -= 1
 
-    def pop(self):
-        return self.q.pop(0)
+    def push(self, x: int) -> None:
+        """
+        Push element x onto stack.
+        """
+        n = len(self.queue)
+        self.queue.append(x)
+        for _ in range(n):
+            self.queue.append(self.queue.popleft())
 
-    def top(self):
-        return self.q[0]
 
-    def empty(self):
-        return self.q == []
+    def pop(self) -> int:
+        """
+        Removes the element on top of the stack and returns that element.
+        """
+        return self.queue.popleft()
+
+
+    def top(self) -> int:
+        """
+        Get the top element.
+        """
+        return self.queue[0]
+
+
+    def empty(self) -> bool:
+        """
+        Returns whether the stack is empty.
+        """
+        return not self.queueq == []
