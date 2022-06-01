@@ -8,10 +8,12 @@ def isvalid(s):
             stack.append(']')
         elif item == '{':
             stack.append('}')
+        # not stack: ]，其他都可由stack[-1] != item解决
         elif not stack or stack[-1] != item:
             return False
         else:
             stack.pop()
+    # 最后栈为空说明互相匹配
     return True if not stack else False
 
 
