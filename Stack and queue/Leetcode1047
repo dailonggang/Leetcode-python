@@ -1,7 +1,8 @@
 def removeDuplicates(s):
     # 创建空列表
-    stack = list()
+    stack = list()  # 等同于stack = []
     for item in s:
+        # 如果stack非空且栈顶等于输入元素，弹出
         if stack and stack[-1] == item:
             stack.pop()
         else:
