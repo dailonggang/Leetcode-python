@@ -1,0 +1,30 @@
+import heapq
+
+
+def topKFrequent(nums, k):
+    # 要统计元素出现频率
+    # 创建一个空字典
+    map_ = {}  # nums[i]:对应出现的次数  map_: {1:4, 5:1, 7:2, 9:3}
+    for i in range(len(nums)):
+        # nums[i]对应key,get()得到对应key的value
+        map_[nums[i]] = map_.get(nums[i], 0) + 1  # 对出现的key进行加一操作
+
+    # 对频率排序
+    # 定义一个小顶堆，大小为k
+    pri_que = []  # 小顶堆
+
+    # 用固定大小为k的小顶堆，扫面所有频率的数值
+    for key, value in map_.items():  # items()遍历字典
+        heapq.heappush(pri_que, (value, key))  # 遍历字典优先队列存入pri_que
+        if len(pri_que) > k:  # 如果堆的长度大于K，则队列弹出，保证堆的大小一直为k
+            heapq.heappop(pri_que)  # 弹出堆顶元素
+
+    # 找出前K个高频元素，因为小顶堆先弹出的是最小的，所以倒序来输出到数组
+    result = [0] * k  # [0, 0, 0]
+    for i in range(k - 1, -1, -1):  # 倒序输出到数组
+        result[i] = heapq.heappop(pri_que)[1]  # 存入为（value:key），所以弹出key为[1]
+    return result
+
+
+nums = [1, 1, 5, 7, 9, 9, 7, 9, 1, 1]
+print(topKFrequent(nums, 3))
