@@ -1,0 +1,41 @@
+class MyQueue:
+
+    def __init__(self):
+        # 初始化输入栈和输出栈
+        self.inStack = []
+        self.outStack = []
+
+    def push(self, x: int) -> None:
+        # 有新元素进来，进入输入栈
+        self.inStack.append(x)
+
+    def pop(self) -> int:
+        # 如果为空
+        if self.empty():
+            return None
+
+        # 如果输出栈不为空，返回输出栈中的元素
+        if self.outStack:
+            return self.outStack.pop()
+        # 输出栈为空,将输入栈的元素压入输出栈
+        else:
+            while self.inStack:
+                val = self.inStack.pop()
+                self.outStack.append(val)
+            return self.outStack.pop()
+
+    def peek(self) -> int:
+        # 使用已有的函数 pop
+        res = self.pop()
+        # pop 函数弹出了 res，所以要再添加回去
+        self.outStack.append(res)
+
+        return res
+
+
+    def empty(self) -> bool:
+        # 两个栈都为空，队列才为空
+        if not(self.inStack or self.outStack):
+            return True
+
+        return False
