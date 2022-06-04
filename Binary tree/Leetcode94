@@ -1,0 +1,19 @@
+def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    if not root:
+        return []
+
+    stack = []  # 不能提前将root结点加入stack中
+    result = []
+    while root or stack:
+        # 如果根节点不为空，那就将节点存入stack中，先左
+        if root:
+            stack.append(root)
+            root = root.left
+        # 当根节点为空，说明左节点到底了，本着先入后出的原则，弹出栈顶元素
+        else:
+            root = stack.pop()
+            result.append(root.val)
+
+            # 如果右节点也为空，弹出中间节点，然后重新检查右节点
+            root = root.right
+    return result
