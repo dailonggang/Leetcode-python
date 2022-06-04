@@ -3,7 +3,7 @@ def postorderTraversal(root):
   result = []
 
   def traversal(root):
-      if root == None:
+      if not root:
           return
       traversal(root.left)    # 左
       traversal(root.right)   # 右
