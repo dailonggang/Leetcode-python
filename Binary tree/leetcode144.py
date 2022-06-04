@@ -6,12 +6,12 @@ class TreeNode:
 
 
 def preorderTraversal(root):
-    # 保存结果
+    # 创建空列表用来保存结果
     result = []
     
     # 递归
     def traversal(root):
-        if root == None:
+        if not root:
             return
         result.append(root.val)  # 前序
         traversal(root.left)  # 左
