@@ -11,7 +11,7 @@ def preorderTraversal(root):
     node = stack.pop()
     # 将栈顶元素的值添加进result
     result.append(node.val)
-    # 先加载右节点，再加载左节点，先进后出
+    # 如果栈顶元素的左右节点不为空，先加载右节点，再加载左节点，先进后出
     if node.right:
         stack.append(node.right)
     if node.left:
