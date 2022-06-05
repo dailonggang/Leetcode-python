@@ -1,0 +1,14 @@
+def invertTree(self, root: TreeNode) -> TreeNode:
+    if not root:
+        return root
+    st = []
+    st.append(root)
+    while st:
+        node = st.pop()
+        node.left, node.right = node.right, node.left #中
+        if node.left:
+            st.append(node.left) #左
+        if node.right:
+            st.append(node.right) #右
+
+    return root
