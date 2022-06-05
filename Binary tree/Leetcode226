@@ -20,7 +20,7 @@ def InvertTree(root):
     """
     if not root:
         return None
-    root.left, root.right = root.right, root.left
-    InvertTree(root.left)
-    InvertTree(root.right)
-    return root
+    root.left, root.right = root.right, root.left # 中
+    InvertTree(root.left)  # 左
+    InvertTree(root.right)  # 右
+    return root 
