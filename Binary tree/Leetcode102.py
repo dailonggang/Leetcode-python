@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 
 
 # 二叉树节点定义
@@ -16,7 +16,7 @@ def levelOrder(root):
     if not root:
         return res
     # 创建双端队列，可以比较方便的从两头append数据
-    queue = collections.deque()
+    queue = deque()
     # 添加根结点
     queue.append(root)
 
