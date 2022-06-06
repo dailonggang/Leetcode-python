@@ -1,0 +1,16 @@
+def maxdepth(self, root: treenode) -> int:
+    if not root:
+        return 0
+    depth = 0 #记录深度
+    queue = collections.deque()
+    queue.append(root)
+    while queue:
+        size = len(queue)
+        depth += 1
+        for i in range(size):
+            node = queue.popleft()
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+    return depth
