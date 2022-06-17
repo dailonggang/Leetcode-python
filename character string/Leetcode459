@@ -5,7 +5,8 @@ def repeatedSubstringPattern(s):
     getNext(next, s)
     # 通过对重复字符串的打印发现，当采用原来next时，第一个子字符串全为0，后面重复子字符串从1递加
     # 如果不重复对应next为0，如果后面有重复，还是从1递加
-    if next[-1] != 0 and len(s) % (len(s) - next[-1]) == 0:
+    # next[-1] != 0：后续如果不重复，全为0，说明字符串不能重复，可以打印输出看看
+    if next[-1] != 0 and len(s) % (len(s) - next[-1]) == 0:  # 
         return True
     return False
 
