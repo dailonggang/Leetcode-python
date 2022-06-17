@@ -1,4 +1,5 @@
 def strStr(haystack, needle):
+    # 进行重复验证
     a = len(needle)
     b = len(haystack)
     if a == 0:
