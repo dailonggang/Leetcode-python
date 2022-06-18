@@ -7,6 +7,7 @@ def maxSlidingWindow(nums, k):
     # 首先遍历前k个值
     for i in range(k):
         # 当队列q不为空，如果加入值大于上一个值，将对应下标pop，反之将下标添加到q中
+        # 让最大的占据队首，直到超出k的范围，弹出
         while q and nums[i] >= nums[q[-1]]:
             q.pop()
         q.append(i)
@@ -21,6 +22,7 @@ def maxSlidingWindow(nums, k):
         # 当超出滑动窗口时，进行popleft()
         while q[0] <= i - k:
             q.popleft()
+        # 将每一次比较的最大值加入到ans中
         ans.append(nums[q[0]])
 
     return ans
